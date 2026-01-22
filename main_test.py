@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 import os
 from pymongo import MongoClient
+import pandas as pd
 
 load_dotenv()
 
@@ -27,6 +28,10 @@ feb_db = client['feb_db']
 
 # print(collections)
 
-shots = feb_db.get_collection('FEB3_players_shots').find_one("{player_number: 9}")
+shots = feb_db.get_collection('FEB3_players_shots').find_one()
 
-print(shots)
+
+main_df = pd.DataFrame(shots)
+main_df.head()
+
+# print(shots)
