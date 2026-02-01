@@ -21,17 +21,14 @@ for db in databases:
     
 feb_db = client['feb_db']
 
-# collections = feb_db.list_collection_names()
+cursor = feb_db.FEB3_players_statistics.find()
 
-# for i in range(len(collections)):
-    # print("-", collections[i])
+df_stats = pd.DataFrame(list(cursor))
 
-# print(collections)
+pd.set_option("display.max_rows", None)
+pd.set_option("display.max_columns", None)
+pd.set_option("display.width", None)
+pd.set_option("display.max_colwidth", None)
 
-shots = feb_db.get_collection('FEB3_players_shots').find_one()
 
-
-main_df = pd.DataFrame(shots)
-main_df.head()
-
-# print(shots)
+df_stats[df_stats["player_feb_id"] == "1025355"]
